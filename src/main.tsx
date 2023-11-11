@@ -8,7 +8,7 @@ import App from "./components/App/App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import GlobalStyled from "./styles/GlobalStyled";
+import GlobalStyled from "./styles/GlobalsStyled";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
