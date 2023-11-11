@@ -33,9 +33,7 @@ const customRender = (
   };
   const { isMemoryRouter, isProvider } =
     activateCustumazer ?? ActivateCustumazerDummy;
-  const { initialPath, preloadedState } = initialProps
-    ? initialProps
-    : initialPropsDummy;
+  const { initialPath, preloadedState } = initialProps ?? initialPropsDummy;
 
   const base = <ThemeProvider theme={mainTheme}>{children}</ThemeProvider>;
   const setProvide: React.ReactElement = isProvider ? (
