@@ -32,6 +32,7 @@ ul{
   padding: 0;
   margin: 0;
 }
+
 body{
   font-family: ${({ theme }) => theme.typography.mainFontFamily};
   color: ${({ theme }) => theme.color.mainFont};
