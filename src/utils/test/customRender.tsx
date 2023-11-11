@@ -3,13 +3,16 @@ import { ThemeProvider } from "styled-components";
 import mainTheme from "../../styles/mainTheme";
 import { MemoryRouter } from "react-router-dom";
 import React from "react";
+import { Provider } from "react-redux";
+import { store } from "../../store";
 
 interface ActivateCustumazerStructure {
   isMemoryRouter?: boolean;
+  isProvider?: boolean;
 }
 
 interface initialPropsStructure {
-  initialPath: string;
+  initialPath?: string;
 }
 
 const customRender = (
@@ -20,17 +23,29 @@ const customRender = (
   const initialPropsDummy: initialPropsStructure = { initialPath: "" };
   const ActivateCustumazerDummy: ActivateCustumazerStructure = {
     isMemoryRouter: false,
+    isProvider: false,
   };
-  const { isMemoryRouter } = activateCustumazer
+  const { isMemoryRouter, isProvider } = activateCustumazer
     ? activateCustumazer
     : ActivateCustumazerDummy;
   const { initialPath } = initialProps ? initialProps : initialPropsDummy;
 
   const base = <ThemeProvider theme={mainTheme}>{children}</ThemeProvider>;
-  const setMemoryRouter: React.ReactElement = isMemoryRouter ? (
-    <MemoryRouter initialEntries={[initialPath]}>{base}</MemoryRouter>
+  const setProvide: React.ReactElement = isProvider ? (
+    <Provider store={store}>{base}</Provider>
   ) : (
     base
+  );
+  const setMemoryRouter: React.ReactElement = isMemoryRouter ? (
+    <MemoryRouter
+      initialEntries={[
+        initialPath ? initialPath : initialPropsDummy.initialPath!,
+      ]}
+    >
+      {setProvide}
+    </MemoryRouter>
+  ) : (
+    setProvide
   );
   return render(setMemoryRouter);
 };
