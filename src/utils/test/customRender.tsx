@@ -13,7 +13,7 @@ interface ActivateCustumazerStructure {
   isProvider?: boolean;
 }
 
-interface initialPropsStructure {
+interface InitialPropsStructure {
   initialPath?: string;
   preloadedState?: PreloadedState<RootState>;
 }
@@ -21,9 +21,9 @@ interface initialPropsStructure {
 const customRender = (
   children: React.ReactElement,
   activateCustumazer?: ActivateCustumazerStructure,
-  initialProps?: initialPropsStructure,
+  initialProps?: InitialPropsStructure,
 ) => {
-  const initialPropsDummy: initialPropsStructure = {
+  const initialPropsDummy: InitialPropsStructure = {
     initialPath: "",
     preloadedState: undefined,
   };
