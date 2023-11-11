@@ -3,6 +3,7 @@ import useApiUsers from "../../hooks/UseApiUsers";
 import { useAppDispatch } from "../../store/hooks";
 import HomePageStyled from "./HomePageStyled";
 import { loadUsersActionCreator } from "../../store/feature/user/userSlice";
+import UserList from "../UserList/UserList";
 
 const HomePage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -18,6 +19,7 @@ const HomePage = (): React.ReactElement => {
   return (
     <HomePageStyled>
       <h2>All users</h2>
+      <UserList />
     </HomePageStyled>
   );
 };
