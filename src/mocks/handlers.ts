@@ -2,7 +2,7 @@ import { http, HttpResponse } from "msw";
 
 import { mockUsers } from "../setupTests";
 
-const urlApi = import.meta.env.VITE_URL_API;
+const urlApi = import.meta.env.VITE_API_URL;
 
 export const handlers = [
   http.get(`${urlApi}/users`, () => {

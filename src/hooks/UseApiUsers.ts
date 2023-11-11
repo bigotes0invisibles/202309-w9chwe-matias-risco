@@ -6,7 +6,7 @@ const useApiUsers = () => {
 
   const getUsersApi = useCallback(async () => {
     const response = await fetch(`${urlApi}/users`);
-    const users = (await response.json()) as UserStructure;
+    const users = (await response.json()) as UserStructure[];
     return users;
   }, [urlApi]);
 
