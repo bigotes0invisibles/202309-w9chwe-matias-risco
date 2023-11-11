@@ -30,7 +30,7 @@ const customRender = (
   const setMemoryRouter: React.ReactElement = isMemoryRouter ? (
     <MemoryRouter initialEntries={[initialPath]}>{base}</MemoryRouter>
   ) : (
-    <base />
+    base
   );
   return render(setMemoryRouter);
 };
