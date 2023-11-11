@@ -1,4 +1,4 @@
-export interface User {
+export interface UserStructure {
   id: number;
   name: string;
   lastName: string;
@@ -6,5 +6,5 @@ export interface User {
 }
 
 export interface UserStateStructure {
-  users: User[];
+  users: UserStructure[];
 }
