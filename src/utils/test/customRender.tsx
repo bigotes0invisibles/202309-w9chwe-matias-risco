@@ -4,7 +4,9 @@ import mainTheme from "../../styles/mainTheme";
 import { MemoryRouter } from "react-router-dom";
 import React from "react";
 import { Provider } from "react-redux";
-import { store } from "../../store";
+import { RootState } from "../../store";
+import { PreloadedState } from "@reduxjs/toolkit";
+import { setupStore } from "../setUpStore";
 
 interface ActivateCustumazerStructure {
   isMemoryRouter?: boolean;
@@ -13,6 +15,7 @@ interface ActivateCustumazerStructure {
 
 interface initialPropsStructure {
   initialPath?: string;
+  preloadedState?: PreloadedState<RootState>;
 }
 
 const customRender = (
@@ -20,18 +23,23 @@ const customRender = (
   activateCustumazer?: ActivateCustumazerStructure,
   initialProps?: initialPropsStructure,
 ) => {
-  const initialPropsDummy: initialPropsStructure = { initialPath: "" };
+  const initialPropsDummy: initialPropsStructure = {
+    initialPath: "",
+    preloadedState: undefined,
+  };
   const ActivateCustumazerDummy: ActivateCustumazerStructure = {
     isMemoryRouter: false,
     isProvider: false,
   };
   const { isMemoryRouter, isProvider } =
     activateCustumazer ?? ActivateCustumazerDummy;
-  const { initialPath } = initialProps ? initialProps : initialPropsDummy;
+  const { initialPath, preloadedState } = initialProps
+    ? initialProps
+    : initialPropsDummy;
 
   const base = <ThemeProvider theme={mainTheme}>{children}</ThemeProvider>;
   const setProvide: React.ReactElement = isProvider ? (
-    <Provider store={store}>{base}</Provider>
+    <Provider store={setupStore(preloadedState)}>{base}</Provider>
   ) : (
     base
   );
