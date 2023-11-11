@@ -5,7 +5,11 @@ import App from "./App";
 describe("Given the component App", () => {
   describe("When App it is render with url location as /", () => {
     test("then it should show HomePage", () => {
-      customRender(<App />, { isMemoryRouter: true }, { initialPath: "/" });
+      customRender(
+        <App />,
+        { isMemoryRouter: true, isProvider: true },
+        { initialPath: "/" },
+      );
 
       const headingElement = screen.getByRole("heading", { name: "All users" });
 

@@ -5,7 +5,7 @@ import HomePage from "./HomePage";
 describe("Given the component HomePage", () => {
   describe("When HomePage it is render", () => {
     test("the user should see the heading of HomePage is All users", () => {
-      customRender(<HomePage />);
+      customRender(<HomePage />, { isProvider: true });
 
       const headingElement = screen.getByRole("heading", { name: "All users" });
 
