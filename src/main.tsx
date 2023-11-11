@@ -6,13 +6,19 @@ import "@fontsource/saira-stencil-one";
 import "@fontsource-variable/montserrat";
 import App from "./components/App/App";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./store";
+import GlobalStyled from "./styles/GlobalStyled";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider theme={mainTheme}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={mainTheme}>
+        <BrowserRouter>
+          <GlobalStyled />
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
 );
