@@ -1,6 +1,6 @@
-import { usuario } from "../store/feature/usuario/types";
+import { User } from "../store/feature/user/types";
 
-const mockData: usuario[] = [
+const mockData: User[] = [
   {
     id: 0,
     isFriend: true,

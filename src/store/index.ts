@@ -4,10 +4,10 @@ import {
   Action,
   combineReducers,
 } from "@reduxjs/toolkit";
-import usuarioReduce from "../store/feature/usuario/usuarioSlice";
+import usersReduce from "./feature/user/userSlice";
 
 export const rootReducer = combineReducers({
-  usuarioState: usuarioReduce,
+  usersState: usersReduce,
 });
 
 export const store = configureStore({
