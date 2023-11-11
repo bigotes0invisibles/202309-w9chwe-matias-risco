@@ -12,8 +12,10 @@ h2,
 h3,
 p,
 body{
-  margin: 0;
   padding: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin: 0;
 }
 
 button{
