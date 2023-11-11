@@ -25,9 +25,8 @@ const customRender = (
     isMemoryRouter: false,
     isProvider: false,
   };
-  const { isMemoryRouter, isProvider } = activateCustumazer
-    ? activateCustumazer
-    : ActivateCustumazerDummy;
+  const { isMemoryRouter, isProvider } =
+    activateCustumazer || ActivateCustumazerDummy;
   const { initialPath } = initialProps ? initialProps : initialPropsDummy;
 
   const base = <ThemeProvider theme={mainTheme}>{children}</ThemeProvider>;
@@ -38,9 +37,7 @@ const customRender = (
   );
   const setMemoryRouter: React.ReactElement = isMemoryRouter ? (
     <MemoryRouter
-      initialEntries={[
-        initialPath ? initialPath : initialPropsDummy.initialPath!,
-      ]}
+      initialEntries={[initialPath || initialPropsDummy.initialPath!]}
     >
       {setProvide}
     </MemoryRouter>
