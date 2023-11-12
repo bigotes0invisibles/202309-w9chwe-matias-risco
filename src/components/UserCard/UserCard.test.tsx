@@ -8,7 +8,17 @@ describe("Given the component UserCard", () => {
     test("the user should see the heading of Manolo Comite", () => {
       const ManoloInfo = mockData[0];
       const headingName = `${ManoloInfo.name} ${ManoloInfo.lastName}`;
-      customRender(<UserCard user={ManoloInfo} />);
+      customRender(
+        <UserCard user={ManoloInfo} />,
+        { isProvider: true },
+        {
+          preloadedState: {
+            usersState: {
+              users: mockData,
+            },
+          },
+        },
+      );
 
       const headingElement = screen.getByRole("heading", {
         name: headingName,

@@ -9,7 +9,10 @@ declare module "styled-components" {
       mainFont: string;
       secondaryFont: string;
       disableButtonBackground: string;
-      ButtonBackground: string;
+      buttonBackground: string;
+      cardUserFriend: string;
+      cardUserEnemy: string;
+      cardUserUnknown: string;
     };
     typography: {
       mainFontFamily: string;
