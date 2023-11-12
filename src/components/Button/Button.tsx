@@ -1,3 +1,5 @@
+import ButtonStyled from "./ButtonStyled";
+
 interface ButtonPropsStructure {
   innerText: string;
   className: string;
@@ -10,9 +12,9 @@ const Button = ({
   onClick,
 }: ButtonPropsStructure): React.ReactElement => {
   return (
-    <button className={className} onClick={onClick}>
+    <ButtonStyled className={className} onClick={onClick}>
       {innerText}
-    </button>
+    </ButtonStyled>
   );
 };
 

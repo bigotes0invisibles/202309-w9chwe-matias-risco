@@ -34,6 +34,16 @@ const UserCardStyled = styled.div`
       width: 180px;
       height: 180px;
     }
+
+    &__button {
+      &--friend {
+        border-color: ${({ theme }) => theme.color.cardUserFriend};
+      }
+
+      &--enemy {
+        border-color: ${({ theme }) => theme.color.cardUserEnemy};
+      }
+    }
   }
 `;
 

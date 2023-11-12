@@ -1,4 +1,5 @@
 import { UserStructure } from "../../store/feature/user/types";
+import Button from "../Button/Button";
 import UserCardStyled from "./UserCardStyled";
 
 interface UserCardPropsStructure {
@@ -8,6 +9,15 @@ interface UserCardPropsStructure {
 const UserCard = ({
   user: { isFriend, lastName, name, image },
 }: UserCardPropsStructure): React.ReactElement => {
+  const setfriend = () => {
+    switch (isFriend) {
+      case "friend":
+        return "enemy";
+      default:
+        return "friend";
+    }
+  };
+
   return (
     <UserCardStyled className={`user-card user-card--${isFriend}`}>
       <h3>{`${name} ${lastName}`}</h3>
@@ -19,6 +29,10 @@ const UserCard = ({
         height="280"
       />
       <span>he is {isFriend}</span>
+      <Button
+        className={`user-card__button--${setfriend()}`}
+        innerText={`set as ${setfriend()}`}
+      />
     </UserCardStyled>
   );
 };
