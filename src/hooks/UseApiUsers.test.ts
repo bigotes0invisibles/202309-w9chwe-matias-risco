@@ -20,4 +20,19 @@ describe("Given the hook UseApiUsers", () => {
       expect(alpharius.name).toBe(alphariusName);
     });
   });
+
+  describe("When patchUserApi is call", () => {
+    test("then it should return the information of Manolo", async () => {
+      const {
+        result: {
+          current: { getUsersApi, patchUserApiToggleFriend },
+        },
+      } = renderHook(useApiUsers);
+      const manoloPocition = 0;
+      const manolo = (await getUsersApi())[manoloPocition];
+      const manoloUpdated = await patchUserApiToggleFriend(manolo);
+
+      expect(manolo.isFriend).not.toBe(manoloUpdated.isFriend);
+    });
+  });
 });

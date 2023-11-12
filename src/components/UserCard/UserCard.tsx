@@ -15,7 +15,9 @@ const UserCard = ({
 }: UserCardPropsStructure): React.ReactElement => {
   const dispatch = useDispatch();
   const onClick = useCallback(() => {
-    dispatch(toggleFriendActionCreator(id));
+    (async () => {
+      dispatch(toggleFriendActionCreator(id));
+    })();
   }, [dispatch, id]);
 
   return (
