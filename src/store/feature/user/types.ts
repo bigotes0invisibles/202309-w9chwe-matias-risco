@@ -2,7 +2,8 @@ export interface UserStructure {
   id: number;
   name: string;
   lastName: string;
-  isFriend: boolean;
+  isFriend: "unknown" | "friend" | "enemy";
+  image: string;
 }
 
 export interface UserStateStructure {
