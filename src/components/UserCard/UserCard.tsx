@@ -5,20 +5,24 @@ import Button from "../Button/Button";
 import UserCardStyled from "./UserCardStyled";
 import { toggleFriendActionCreator } from "../../store/feature/user/userSlice";
 import { useCallback } from "react";
+import useApiUsers from "../../hooks/UseApiUsers";
 
 interface UserCardPropsStructure {
   user: UserStructure;
 }
 
 const UserCard = ({
-  user: { isFriend, lastName, name, image, id },
+  user: { isFriend, lastName, name, image },
+  user,
 }: UserCardPropsStructure): React.ReactElement => {
   const dispatch = useDispatch();
+  const { patchUserApiToggleFriend } = useApiUsers();
   const onClick = useCallback(() => {
     (async () => {
-      dispatch(toggleFriendActionCreator(id));
+      const newuser = await patchUserApiToggleFriend(user);
+      dispatch(toggleFriendActionCreator(newuser.id));
     })();
-  }, [dispatch, id]);
+  }, [dispatch, patchUserApiToggleFriend, user]);
 
   return (
     <UserCardStyled className={`user-card user-card--${isFriend}`}>
